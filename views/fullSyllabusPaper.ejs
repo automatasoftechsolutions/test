@@ -1,0 +1,80 @@
+<%- include('partials/header') %>
+
+
+<div class="bg-light p-5 h3 shadow-lg" id="quizMasterContainer">
+
+  <div class="text-center mb-3"><h5>F U L L  S Y L L A B U S</h5></div>
+
+  <form action="fullSyllabusPaper" method="post">
+
+    <select class="form-select mb-2" aria-label="Default select example" id="fullSyllabusChoice" name="fullSyllabusChoice" onchange="showSourceQuestions()">
+      <option value="XI" selected>XI</option>
+      <option value="XII">XII</option>
+      <option value="NEET">NEET</option>
+    </select>
+
+    <select class="form-select" aria-label="Default select example" name="paperMedium">
+      <option value="English" selected>English</option>
+      <option value="Hindi">Hindi</option>
+      <option value="HingLish">HingLish</option>
+      <option value="HindiEnglishSeparate">HindiEnglishSeparate</option>
+      <option value="quiz">Java Script Data for Quiz</option>
+    </select>
+
+    <div id="selectedQs" class="m-2 mt-3 text-purple">Selected Questions: 0</div>
+
+    <div class="quizBody" id="quizBody">
+    <% for(i=0; i<questionTypes.length; i++){ %>
+      <div class="input-group mb-3">
+        <span class="input-group-text w-custom" id="questions<%- i %>"></span>
+        <input type="NUMBER" class="form-control w-25"  name="qsContribution" value= 0 onchange="selectedQuestions4unitTest()">
+        <label class="p-2"><%- questionTypes[i] %></label>
+      </div>
+      <% } %>
+      <button class="text-white p-1 pt-2 mt-3 w-100" id='submitBtn'>Submit</button>
+    </form>
+  </div>
+  <script>
+  questions0 = document.getElementById("questions0");
+  questions1 = document.getElementById("questions1");
+  questions2 = document.getElementById("questions2");
+  questions3 = document.getElementById("questions3");
+  questions4 = document.getElementById("questions4");
+  questions5 = document.getElementById("questions5");
+  questions6 = document.getElementById("questions6");
+  
+  sourceQuestionsXI = [<%= XI %>]
+  sourceQuestionsXII = [<%= XII %>]
+  sourceQuestionsNEET = [<%= NEET %>]
+
+  sourceQuestions = sourceQuestionsXI;
+
+  fillSourceQuestions(sourceQuestions);
+
+
+function showSourceQuestions(){
+    let fullsyllabuschoice = document.getElementById("fullSyllabusChoice").value;
+    if(fullsyllabuschoice === "XI"){
+      fillSourceQuestions(sourceQuestionsXI);
+    } else if (fullsyllabuschoice === "XII"){
+      fillSourceQuestions(sourceQuestionsXII);
+    } else if (fullsyllabuschoice === "NEET"){
+      fillSourceQuestions(sourceQuestionsNEET);
+   }
+} 
+
+function fillSourceQuestions(sourceQuestions){
+  questions0.innerText = sourceQuestions[0];
+  questions1.innerText = sourceQuestions[1];
+  questions2.innerText = sourceQuestions[2];
+  questions3.innerText = sourceQuestions[3];
+  questions4.innerText = sourceQuestions[4];
+  questions5.innerText = sourceQuestions[5];
+  questions6.innerText = sourceQuestions[6];
+}
+
+</script>
+
+
+<%- include('partials/footer') %>
+

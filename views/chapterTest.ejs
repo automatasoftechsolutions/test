@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+
+
+<div class="container bg-light p-5 w-100 h3 shadow-lg" id="quizMasterContainer">
+  <div class="text-center"><h5>Q U I Z - M A S T E R ( CHAPTER WISE )</h5></div>
+  <hr>
+  <div class="quizBody" id="quizBody">
+    <form action="/selectChapters" method="post">
+      <div class="row align-items-start">
+        <div class="col">
+          <% for(i=0; i<10; i++){ %>
+        <div class="form-check p-2 px-4">
+         <input class="form-check-input" type="checkbox" name="CHAPTERNUMBER" value="<%- [i+1] %>" id="<%- [i+1] %>" >
+         <label class="form-check-label" for="<%- [i+1] %>">
+          <%- chapternames[i] %> 
+         </label>
+        </div>
+        <% } %>
+        </div>
+        <div class="col">
+          <% for(i=10; i<20; i++){ %>
+        <div class="form-check p-2 px-4">
+         <input class="form-check-input" type="checkbox" name="CHAPTERNUMBER" value="<%- [i+1] %>" id="<%- [i+1] %>" >
+         <label class="form-check-label" for="<%- [i+1] %>">
+          <%- chapternames[i] %> 
+         </label>
+        </div>
+        <% } %>
+        </div>
+        <div class="col">
+          <% for(i=20; i<30; i++){ %>
+        <div class="form-check p-2 px-4">
+         <input class="form-check-input" type="checkbox" name="CHAPTERNUMBER" value="<%- [i+1] %>" id="<%- [i+1] %>" >
+         <label class="form-check-label" for="<%- [i+1] %>">
+          <%- chapternames[i] %> 
+         </label>
+        </div>
+        <% } %>
+        </div>
+        <div class="col">
+          <% for(i=30; i<38; i++){ %>
+        <div class="form-check p-2 px-4">
+         <input class="form-check-input" type="checkbox" name="CHAPTERNUMBER" value="<%- [i+1] %>" id="<%- [i+1] %>" >
+         <label class="form-check-label" for="<%- [i+1] %>">
+          <%- chapternames[i] %> 
+         </label>
+        </div>
+        <% } %>
+        </div>
+
+      </div>
+    
+
+      <button class="text-white p-1 pt-2 mt-3 w-100" id='submitBtn'>Submit</button>
+    </form>
+</div>
+
+
+<%- include('partials/footer') %>
+

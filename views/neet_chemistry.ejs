@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+<div class="container bg-light p-5 w-75 h3 shadow-lg" id="quizMasterContainer">
+    <div class="text-center"><h5>Select the required Chapter</h5></div>
+    <hr>
+    <div class="quizBody" id="quizBody">
+      <form action="/selectChapters" method="post">
+          <div class="row align-items-start">
+              <div class="col">
+            <h5>Chapters from Class-XI</h5>
+          <% for(i=0; i<10; i++){ %>
+        <div class="form-check p-2 px-4">
+         <input class="form-check-input" type="checkbox" name="CHAPTERNUMBER" value="<%- [i+1] %>" id="<%- [i+1] %>" >
+         <label class="form-check-label" for="<%- [i+1] %>">
+          <%- neet_botany_chapternames[i] %> 
+         </label>
+        </div>
+        <% } %>
+        </div>
+        <div class="col">
+            <h5>Chapters from Class-XII</h5>
+          <% for(i=10; i<neet_botany_chapternames.length; i++){ %>
+        <div class="form-check p-2 px-4">
+         <input class="form-check-input" type="checkbox" name="CHAPTERNUMBER" value="<%- [i+1] %>" id="<%- [i+1] %>" >
+         <label class="form-check-label" for="<%- [i+1] %>">
+          <%- neet_botany_chapternames[i] %> 
+         </label>
+        </div>
+        <% } %>
+        </div>
+      </div>
+      <button class="text-white p-1 pt-2 mt-3 w-100" id='submitBtn'>Submit</button>
+    </form>
+</div>
+
+<%- include('partials/footer') %>

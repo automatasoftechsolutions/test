@@ -1,0 +1,103 @@
+<%- include('partials/header') %>
+<% mcqs = TOPICMCQS %>
+<% st = TOPICST %>
+<% mtc = TOPICMTC  %>
+<% db = TOPICDB %>
+<% ar = TOPICAR %>
+<% pyp = TOPICPYP  %>
+<% np = TOPICNP %>
+
+
+
+
+<div class="bg-light p-5 h3 shadow-lg" id="quizMasterContainer">
+  <form action="/customTopicTest" method="post">
+    <div class="text-center"><h5>Quiz Master : Chapter Wise Test</h5></div>
+    <div id="selectedQs" class="mt-2">Selected Questions: 0</div>
+    <hr>
+  <div class="quizBody" id="quizBody">
+    <% for(i=0; i<requiredchapternames.length; i++){ %>
+      <table class="table table-striped text-center">
+        <tr>
+          <td class="table-info"><%- requiredchapternames[i] %></td>
+          <td class="table-secondary">Simple-MCQs </td>
+          <td class="table-warning">Statements</td>
+          <td class="table-success">Match the Columns</td>
+          <td class="table-danger">Diagram Based</td>
+          <td class="table-info">Assertion-Reason</td>
+          <td class="table-warning">Qs from PYP</td>
+          <td class="table-danger">NCERT+<br>(SRG Level)</td>
+        </tr>
+          <% for(let i=0; i<chapter4topics.length; i++){ %>
+
+          <tr>
+          <td class="table-info text-start"><%- [i+1] %>. <%- chapter4topics[i] %></td>
+          <td class="table-secondary">
+            <div class="input-group mb-3">
+              <span class="input-group-text w-custom"><%- mcqs[i] %></span>
+              <input type="number" class="form-control" id="trial" name="qsContribution"  value=0 onchange="selectedQuestions4chapterTest()">
+            </div>
+          </td>
+            <td class="table-warning">
+            <div class="input-group mb-3">
+              <span class="input-group-text w-custom"><%- st[i] %></span>
+              <input type="number" class="form-control" name="qsContribution"  value=0 onchange="selectedQuestions4chapterTest()">
+            </div>
+          </td>
+          <td class="table-success">
+            <div class="input-group mb-3">
+              <span class="input-group-text w-custom"><%- mtc[i] %></span>
+              <input type="number" class="form-control" name="qsContribution"  value=0 onchange="selectedQuestions4chapterTest()">
+            </div>
+          </td>
+          <td class="table-danger">
+            <div class="input-group mb-3">
+              <span class="input-group-text w-custom"><%- db[i] %></span>
+              <input type="number" class="form-control" name="qsContribution"  value=0 onchange="selectedQuestions4chapterTest()">
+            </div>
+          </td>
+          <td class="table-info">
+            <div class="input-group mb-3">
+              <span class="input-group-text w-custom"><%- ar[i] %></span>
+              <input type="number" class="form-control" name="qsContribution"  value=0 onchange="selectedQuestions4chapterTest()">
+            </div>
+          </td>
+          <td class="table-warning">
+            <div class="input-group mb-3">
+              <span class="input-group-text w-custom"><%- pyp[i] %></span>
+              <input type="number" class="form-control" name="qsContribution"  value=0 onchange="selectedQuestions4chapterTest()">
+            </div>
+          </td>
+          <td class="table-danger">
+            <div class="input-group mb-3">
+              <span class="input-group-text w-custom"><%- np[i] %></span>
+              <input type="number" class="form-control" name="qsContribution"  value=0 onchange="selectedQuestions4chapterTest()">
+            </div>
+          </td>
+          </tr>
+          <% } %>
+    <% } %>
+      </table>
+  <hr>
+  <div class="d-flex justify-content-between">
+  <hr> 
+  <select class="form-select w-25" aria-label="Default select example" name="paperMedium">
+    <option value="English" selected>English</option>
+    <option value="Hindi">Hindi</option>
+    <option value="HingLish">HingLish</option>
+    <option value="HindiEnglishSeparate">HindiEnglishSeparate</option>
+    <option value="quiz">Java Script Data for Quiz</option>
+  </select>
+  <!-- Hidden Element to pass values -->
+  <select class="form-select w-25" aria-label="Default select example"  name="FINALCHAPTERS" hidden>
+    <option value= <%= FINALCHAPTERNUMBERS %>></option>
+  </select>
+      <!---->
+  </div>
+    <button class="bg-dark text-white text-large p-4 mt-3 w-100" id='submitBtn'>Submit</button>
+   </form>
+</div>
+</div>
+
+<%- include('partials/footer') %>
+
